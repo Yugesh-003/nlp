@@ -1,31 +1,30 @@
 import re
 
-# Read content from a text file
 text = """
-Employee Contact Information
-
-Name: John Smith
-Email: john.smith@example.com
-Phone: 9876543210
-
-Name: Alice Johnson
-Email: alice_johnson@gmail.com
-Phone: (123) 456-7890
+Yugesh A
+yugesh@gmail.com
+9876543210
+242237
+2024-2027
 """
 
-# Regular expression patterns
-email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
-phone_pattern = r'\b\d{10}\b|\(\d{3}\)\s?\d{3}-\d{4}|\d{3}[-.\s]\d{3}[-.\s]\d{4}'
+# 1. Name
+name = re.findall(r'[A-Za-z ]+', text)
 
-# Find all matches
-emails = re.findall(email_pattern, text)
-phones = re.findall(phone_pattern, text)
+# 2. Email
+email = re.findall(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', text)
 
-# Print the results
-print("📧 Email addresses found:")
-for email in emails:
-    print(email)
+# 3. Phone Number
+phone = re.findall(r'\b\d{10}\b', text)
 
-print("\n📞 Phone numbers found:")
-for phone in phones:
-    print(phone)
+# 4. Roll Number (6 digits)
+roll = re.findall(r'\b\d{6}\b', text)
+
+# 5. Batch
+batch = re.findall(r'\b\d{4}-\d{4}\b', text)
+
+print("Name:", name)
+print("Email:", email)
+print("Phone:", phone)
+print("Roll Number:", roll)
+print("Batch:", batch)

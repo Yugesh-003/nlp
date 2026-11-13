@@ -20,6 +20,6 @@ print(cosine_sim)
 
 # Plot heatmap
 plt.figure(figsize=(6,5))
-sns.heatmap(cosine_sim, annot=True, cmap="Blues", xticklabels=["Doc1","Doc2","Doc3"], yticklabels=["Doc1","Doc2","Doc3"])
+sns.heatmap(cosine_sim, annot=True, xticklabels=["Doc1","Doc2","Doc3"], yticklabels=["Doc1","Doc2","Doc3"])
 plt.title("Cosine Similarity Heatmap")
 plt.show()

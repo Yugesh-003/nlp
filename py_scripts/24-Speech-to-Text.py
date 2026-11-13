@@ -2,7 +2,7 @@
 
 import speech_recognition as sr
 
-audio_file = ("Sample.wav")
+audio_file = ("../Sample.wav")
 r = sr.Recognizer()   #  Creates a Recognizer object from the speech_recognition library.
 # This object has methods for recognizing speech from audio
 

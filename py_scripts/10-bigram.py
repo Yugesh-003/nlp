@@ -39,9 +39,9 @@ for w1, w2 in bigram_list:
     bigram_counts[(w1, w2)] += 1
 
 
-bigram_counts
+print(bigram_counts)
 
-unigram_counts
+print(unigram_counts)
 
 # Step 4: Calculate bigram probabilities
 bigram_probabilities = {}
@@ -81,3 +81,26 @@ for i in range(len(tokens) - 1):
 print("\nProbability of New Sentence:")
 print(prob)
 
+'''
+import nltk
+from nltk.util import ngrams
+from nltk.tokenize import word_tokenize
+from collections import Counter
+
+nltk.download('punkt')
+
+text = "I love Python. I love Data Science."
+
+# Tokenization
+words = word_tokenize(text)
+
+# Generate Unigrams
+bigrams = list(ngrams(words, 2))
+
+# Count frequency
+frequency = Counter(bigrams)
+
+print("Unigrams:")
+for word, count in frequency.items():
+    print(word[0], ":", count)
+'''

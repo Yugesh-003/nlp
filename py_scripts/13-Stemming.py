@@ -3,9 +3,11 @@
 
 # Install NLTK if not already installed
 # !pip install nltk
+# !pip install stemming
 
-from nltk.stem import PorterStemmer, LancasterStemmer, SnowballStemmer
-import re
+from nltk.stem import PorterStemmer, LancasterStemmer, SnowballStemmer, RegexpStemmer
+
+
 
 words = ["eating","eats","eaten","writing","writes","programming"]
 
@@ -35,19 +37,14 @@ for word in words:
 
 # ------------------------------------------------------------
 # ## Lovins Stemmer (Simplified)
-
-# !pip install stemming
-
-# print(words)
-print("Lovins Stemmer")
 from stemming.lovins import stem
+print("Lovins Stemmer")
 for word in words:
-    print(stem(word))
+    print(word, "->", stem(word))
 
 # ------------------------------------------------------------
 # ## Regex-Based Stemmer
 
-from nltk.stem import RegexpStemmer
 reg_stemmer=RegexpStemmer('ing$|s$|e$|able$', min=4)
 print("RegexpStemmer")
 for word in words:

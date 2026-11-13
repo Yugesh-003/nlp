@@ -22,9 +22,6 @@ tfidf_matrix = vectorizer.fit_transform(documents)
 # print(vectorizer.vocabulary_)
 # print(tfidf_matrix)
 
-# Converting sparse matrix into dense matrix
-dense_matrix = tfidf_matrix.toarray()
-print(dense_matrix)
 
 # Get feature names (vocabulary)
 feature_names = vectorizer.get_feature_names_out()
@@ -33,10 +30,15 @@ print("Count of features",len(feature_names))
 for word in feature_names:
     print(word)
 
+# Converting sparse matrix into dense matrix
+dense_matrix = tfidf_matrix.toarray()
+print(dense_matrix)
+
+
 # Convert TF-IDF matrix to a dense format and display
-for i, doc_vector in enumerate(tfidf_matrix.toarray()):
+for i, scores in enumerate(dense_matrix):
     print(f"\nDocument {i+1} TF-IDF Scores:")
 
-    for word, score in zip(feature_names, doc_vector):
+    for word, score in zip(feature_names, scores):
         if score > 0:
             print(f"{word}: {score:.4f}")

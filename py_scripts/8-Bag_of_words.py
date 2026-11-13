@@ -9,19 +9,18 @@ documents = [
 
 # Initialize CountVectorizer
 vectorizer = CountVectorizer()
-print(vectorizer)
 
 # Fit and transform the documents
-X = vectorizer.fit_transform(documents)
-print(X)
-# Change it into dense matrix and display the answer.
+cv = vectorizer.fit_transform(documents)
+# print(X)
+# # Change it into dense matrix and display the answer.
 print(vectorizer.vocabulary_)
 
 # Get the feature (word) names
 feature_names = vectorizer.get_feature_names_out()
 
 # Convert the result to array
-bow_matrix = X.toarray()
+bow_matrix = cv.toarray()
 
 # Display results
 print("Vocabulary / Features:")

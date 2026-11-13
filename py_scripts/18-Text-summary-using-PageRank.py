@@ -36,7 +36,10 @@ print("Scores of Page Rank algorithm")
 print(scores)
 
 # Step 5: Rank sentences and select top ones
-ranked_sentences = sorted(((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
+ranked_sentences = sorted(
+                            ((scores[i], s) for i, s in enumerate(sentences)), 
+                            reverse=True
+                        )
 print("Ranked Sentences")
 print(ranked_sentences)
 print("\n")
@@ -50,5 +53,4 @@ print("\n")
 # Step 6: Generate summary (top 2 sentences)
 summary = " ".join([ranked_sentences[i][1] for i in range(2)])
 
-summary
-
+print(summary)

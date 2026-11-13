@@ -1,18 +1,19 @@
 import re
+import nltk
 from collections import Counter
+from nltk.tokenize import word_tokenize
+
+nltk.download('punkt_tab')
 
 # Sample training text
 text = """
 Machine learning helps computers learn from data.
 """
 
-# Step 1: Tokenize (convert to lowercase and extract words)
-def tokenize(text):
-    return re.findall(r'\b\w+\b', text.lower())
 
 # Step 2: Build Unigram Model (count word frequencies)
 def build_unigram_model(text):
-    tokens = tokenize(text)
+    tokens = word_tokenize(text)
     total_tokens = len(tokens)
     freq_dict = Counter(tokens)
 
@@ -33,3 +34,30 @@ for word, count in frequency.items():
 print("\nUnigram Probabilities:")
 for word, prob in model.items():
     print(f"P({word}) = {prob:.4f}")
+
+
+
+
+'''
+import nltk
+from nltk.util import ngrams
+from nltk.tokenize import word_tokenize
+from collections import Counter
+
+nltk.download('punkt')
+
+text = "I love Python. I love Data Science."
+
+# Tokenization
+words = word_tokenize(text)
+
+# Generate Unigrams
+unigrams = list(ngrams(words, 1))
+
+# Count frequency
+frequency = Counter(unigrams)
+
+print("Unigrams:")
+for word, count in frequency.items():
+    print(word[0], ":", count)
+'''

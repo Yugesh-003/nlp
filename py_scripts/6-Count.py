@@ -1,30 +1,29 @@
 import re
 from collections import Counter
-
+from nltk.tokenize import word_tokenize
 # Sample text
 text = """
 Data science uses data to solve problems."""
 
 # Convert text to lowercase and tokenize (split into words)
-tokens = re.findall(r'\b\w+\b', text.lower())
+tokens = word_tokenize(text.lower())
 #  \w matches any word character: [A-Za-z0-9_]
 # \b represents Word boundary
-print(tokens)
 
-# Count total number of words (tokens)
 total_tokens = len(tokens)
-
-# Count number of unique words (types)
 unique_tokens = len(set(tokens))
+word_counts = Counter(tokens)
 
-# Count occurrences of the word "data"
-word_the_count = tokens.count('data')
+print(f"All tokens: {tokens}\n")
+print(f"Total words (tokens): {total_tokens}")
+print(f"Unique words (types): {unique_tokens}\n")
 
-# Calculate percentage of "the" in all tokens
-percentage_the = (word_the_count / total_tokens) * 100
+# print(f"{'Word':<15} {'Count':>6} {'Percentage':>12}")
+# print("-" * 35)
 
-# Print results
-print("a) Total number of words (tokens):", total_tokens)
-print("b) Number of different words (types):", unique_tokens)
-print("c) Occurrences of the word 'data':", word_the_count)
-print("d) Percentage of 'data': {:.2f}%".format(percentage_the))
+for word, count in word_counts.items():
+    percentage = (count / total_tokens) * 100
+    print(f"Word : {word}") 
+    print(f"Count : {count}") 
+    print(f"Percentage : {percentage}%")
+    print("================================")
